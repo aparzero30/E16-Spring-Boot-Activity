@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <meta charset="UTF-8">
+  <title>All Task</title>
+</head>
+
+<style>
+
+  body {
+    background-color: #36393f;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 4vh;
+    align-items: center;
+    min-height: 100vh;
+    max-height: max-content;
+    width: 100vw;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    overflow-x: hidden;
+    flex-direction: column;
+
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+
+  }
+
+
+  .home{
+    height: 10vh;
+    width: 20vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: cornflowerblue ;
+
+
+  }
+
+  th{
+    width: 20vw;
+    font-size: 4vh;
+    color: cornflowerblue;
+
+  }
+  td{
+    font-size: 3vh;
+    text-align: center;
+  }
+
+  table{
+    background-color:  #2f3136;
+  }
+
+</style>
+<body>
+
+
+
+<a href="http://localhost:8080/home">
+
+  <div class="home">Go To Home</div><br>
+
+</a>
+
+<table>
+  <tr class="header">
+    <th>TASK ID</th>
+    <th>TTILE</th>
+    <th>DESCRIPTION</th>
+    <th>COMPLETED</th>
+  </tr>
+  <tr th:each="entry : ${tasks}">
+    <td th:text="${entry.taskId}"></td>
+    <td th:text="${entry.title}"></td>
+    <td th:text="${entry.description}"></td>
+    <td th:text="${entry.completed}"></td>
+  </tr>
+</table>
+
+
+
+
+
+
+
+
+</div>
+</body>
+</html>

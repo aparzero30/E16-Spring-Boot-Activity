@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <meta charset="UTF-8">
+    <title>Delete Task</title>
+</head>
+
+<style>
+
+    body {
+        background-color: #36393f;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        font-family: "Poppins", sans-serif;
+        color: white;
+        overflow: hidden;
+        flex-direction: column;
+
+    }
+
+    a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .home{
+        height: 10vh;
+        width: 20vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: cornflowerblue ;
+
+
+    }
+
+    form{
+        width: 50vw;
+        height: 50vh;
+        background-color:  #2f3136;
+        font-size: 1vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    input{
+        width: 20vw;
+        font-size: 1vw;
+    }
+
+    form label{
+        margin: 3px;
+        padding: 3px;
+
+
+    }
+
+
+
+    button{
+        height: 10vh;
+        width: 20vw;
+        background-color:indianred;
+
+    }
+    input{
+        pointer-events: none;
+        opacity: 0.5;
+    }
+</style>
+<body>
+
+
+<a href="http://localhost:8080/home">
+
+    <div class="home">Go To Home</div><br>
+
+</a>
+
+<form action="/delete" method="POST">
+
+
+    <label>TaskID</label>
+    <input type="text" name="taskId" th:value="${task.taskId}" class="taskId">
+
+
+    <label>Title</label>
+    <input type="text" name="title" th:value="${task.title}">
+
+    <label>Description</label>
+    <input type="text" name ="description"  th:value="${task.description}"  >
+
+    <label>Completed</label>
+    <input type="text" name="completed" th:value="${task.completed}">
+    <br><br>
+    <button>Delete Task</button>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

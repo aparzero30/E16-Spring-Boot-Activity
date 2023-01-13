@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <meta charset="UTF-8">
+  <title>Search Task to Delete</title>
+</head>
+
+<style>
+
+  body {
+    background-color: #36393f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    overflow: hidden;
+    flex-direction: column;
+
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .home{
+    height: 10vh;
+    width: 20vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: cornflowerblue ;
+
+
+  }
+
+  form{
+    width: 50vw;
+    height: 50vh;
+    background-color:  #2f3136;
+    font-size: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+  }
+
+  form input{
+    width: 20vw;
+    font-size: 1vw;
+  }
+
+  form label{
+    margin: 3px;
+    padding: 3px;
+
+
+  }
+
+
+
+  button{
+    height: 5vh;
+    width: 20vw;
+    background-color:cadetblue;
+
+  }
+</style>
+<body>
+
+
+<a href="http://localhost:8080/home">
+
+  <div class="home">Go To Home</div><br>
+
+</a>
+
+
+<form action="/searchToDelete" method="POST">
+  <label>Task ID</label>
+  <input type="text" id="taskId" name="taskId">
+  <br><br>
+  <button>Search Task</button>
+
+</form>
+
+
+
+
+</body>
+</html>
