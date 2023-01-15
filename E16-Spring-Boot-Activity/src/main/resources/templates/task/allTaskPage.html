@@ -3,6 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <meta charset="UTF-8">
   <title>All Task</title>
 </head>
@@ -22,6 +23,7 @@
     color: white;
     overflow-x: hidden;
     flex-direction: column;
+    position: relative;
 
   }
 
@@ -33,7 +35,7 @@
 
 
   .home{
-    height: 10vh;
+    height: 6vh;
     width: 20vw;
     display: flex;
     justify-content: center;
@@ -46,17 +48,154 @@
   th{
     width: 20vw;
     font-size: 4vh;
-    color: cornflowerblue;
+    color: #60c6fe;
 
   }
   td{
     font-size: 3vh;
     text-align: center;
+
+
   }
 
-  table{
-    background-color:  #2f3136;
+
+
+  body::-webkit-scrollbar {
+    width: 0.3vw; /* width of the entire scrollbar */
   }
+
+  body::-webkit-scrollbar-thumb {
+    background-color: #60c6fe; /* color of the scroll thumb */
+    border-radius: 10px; /* roundness of the scroll thumb */
+  }
+
+  body::-webkit-scrollbar-track {
+    background-color: #2f3136; /* color of the scroll track */
+  }
+
+  body::-webkit-scrollbar-button {
+    display: none; /* hide the scroll buttons */
+  }
+
+
+  table{
+
+    border-collapse: collapse;
+
+
+  }
+
+  tr{
+    border-spacing: 10px;
+  }
+
+  .myDiv{
+
+    width: 0vw;
+    height: 0vh;
+    z-index: 1;
+    align-self: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+    overflow: hidden;
+    border-style: solid;
+    border-width: 1px;
+    border-color:#494949 ;
+    background-color: #36393f;
+display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+  }
+
+  form{
+    width: 30vw;
+    height: 60vh;
+
+    background-color: #36393f;
+    font-size: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  form input{
+    width: 20vw;
+    font-size: 1vw;
+  }
+
+  form label{
+    margin: 3px;
+    padding: 3px;
+
+
+  }
+
+  .highlight{
+    border-width: 10px;
+    border-color: cornflowerblue ;
+    background-color:  #2f3136;
+    margin: 1vh;
+  }
+
+
+
+
+ th,td{
+
+
+
+   border-bottom: 3px;
+    background-color:  #2f3136;
+
+  }
+
+  form button{
+    height: 6vh;
+    margin: 1vh;
+    width: 20vw;
+    background-color:cadetblue;
+    border-style: none;
+
+  }
+  .taskId{
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  form select{
+    width: 20vw;
+    font-size: 1vw;
+    text-align: center;
+  }
+
+  .del{
+    background-color:indianred;
+  }
+
+  table button{
+    background-color: cornflowerblue;
+    margin:3vh;
+    border-style: none;
+    min-height: 8vh;
+    min-width: 12vw;
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+  }
+
+
+.material-symbols-outlined{
+  margin-right: 2vh;
+  margin-top: 2vh;
+  cursor: pointer;
+  color: indianred;
+  font-size: 4vh;
+}
 
 </style>
 <body>
@@ -69,21 +208,141 @@
 
 </a>
 
-<table>
+<table id="myTable">
   <tr class="header">
-    <th>TASK ID</th>
-    <th>TTILE</th>
+    <th>Task ID</th>
+    <th>TITLE</th>
     <th>DESCRIPTION</th>
     <th>COMPLETED</th>
+
   </tr>
-  <tr th:each="entry : ${tasks}">
-    <td th:text="${entry.taskId}"></td>
-    <td th:text="${entry.title}"></td>
-    <td th:text="${entry.description}"></td>
-    <td th:text="${entry.completed}"></td>
+  <tr th:each="entry : ${tasks}" class="highlight">
+    <td th:text="${entry.taskId}" class="td1"></td>
+    <td th:text="${entry.title}" class="td2"></td>
+    <td th:text="${entry.description}" class="td3"></td>
+    <td th:text="${entry.completed}" class="td4"></td>
+
   </tr>
 </table>
 
+<div class="myDiv" id="myDiv">
+<span class="material-symbols-outlined" id="span">
+cancel
+</span>
+
+  <form th:action="@{/submitForm}" method="post">
+
+    <label>TaskID</label>
+    <input type="text" name="taskId"  class="taskId" id="tasKId">
+
+
+    <label>Title</label>
+    <input type="text" name="title" id="title" class="title">
+
+    <label>Description</label>
+    <input type="text" name ="description" id="description" class="description">
+
+    <label>Completed</label>
+
+
+
+    <select name="completed" class="completed">
+      <option value="Not Complete">Not Complete</option>
+      <option value="Complete">Complete</option>
+    </select>
+
+    <br>
+    <br>
+    <button type="submit" name="submitButton" value="update" id="update" onclick="notifupdate()">Update</button>
+    <button type="submit" name="submitButton" value="delete" class="del" id="delete" onclick="notifDelete()">Delete</button>
+
+  </form>
+
+</div>
+
+
+
+
+
+
+
+  <script>
+
+
+
+
+    function notifupdate(){
+      alert("task updated!")
+    }
+
+    function notifDelete(){
+      alert("task deleted!")
+    }
+
+
+
+
+
+
+
+
+    let myDiv = document.getElementById("myDiv");
+    let mySpan = document.getElementById("span");
+
+
+    mySpan.addEventListener("click", function() {
+
+      myDiv.style.width = "0px";
+      myDiv.style.height = "0px";
+
+    });
+
+
+
+
+  const table = document.getElementById("myTable");
+  const rows = table.getElementsByTagName("tr");
+
+
+
+ for (let i = 1; i < rows.length; i++) {
+    const button = document.createElement("button");
+    button.innerHTML = "UPDATE/DELETE";
+    rows[i].appendChild(button);
+
+   rows[i].lastChild.addEventListener("click", function() {
+
+
+     myDiv.style.width = "max-content";
+     myDiv.style.height = "max-content";
+
+     //width: 50vw;
+     //height: 60vh;
+
+
+     // Get the parent row of the clicked button
+     const row = this.parentNode;
+     // Get the cells of the row
+     const cells = row.getElementsByTagName("td");
+     // Set the values of the input fields
+   // document.getElementById("taskId1").value = cells[0].innerHTML;
+   // document.getElementById("title").value = cells[1].innerHTML;
+    // document.getElementById("description").value = cells[2].innerHTML;
+    // document.getElementById("completed").value = cells[3].innerHTML;
+     document.querySelector(".taskId").value = cells[0].innerHTML;
+     document.querySelector(".title").value = cells[1].innerHTML;
+     document.querySelector(".description").value = cells[2].innerHTML;
+
+   //  console.log(cells[0].innerHTML);
+
+   });
+
+ }
+
+
+
+
+</script>
 
 
 

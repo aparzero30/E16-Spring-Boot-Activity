@@ -30,7 +30,16 @@ public class Controller {
 
    @PostMapping("/addTask")
     public String addTask(@ModelAttribute Task task){
-        taskService.addTask(task);
+
+
+
+
+        if(task.getTitle().isEmpty() || task.getDescription().isEmpty() || task.getCompleted().isEmpty()){
+            return "task/addTaskPage";
+        }
+
+       taskService.addTask(task);
+
        return "task/addTaskPage";
    }
 
@@ -41,55 +50,55 @@ public class Controller {
         return "task/allTaskPage";
     }
 
-    @GetMapping ("/addSearhID")
-    public String addSearchIDPage(Model model){
-        return "task/addSearchIDPage";
-    }
 
 
-    @PostMapping("/searchToUpdate")
-    public String searchToUpdate(@RequestParam("taskId") String taskId, Model model)  {
-        // Do something with the inputString
-        try{
-            model.addAttribute("task",taskService.findTask(taskId));
+
+
+
+
+
+
+
+
+
+
+    @PostMapping("/submitForm")
+    public String submitForm(@RequestParam("submitButton") String submitButton, @ModelAttribute Task task, Model model) {
+
+
+
+
+
+
+
+
+        if (submitButton.equals("update")) {
+
+
+            try {
+                taskService.findTask(String.valueOf(task.getTaskId()));
+                taskService.addTask(task);
+
+            }
+            catch (Exception e){
+                model.addAttribute("tasks", taskService.getAllTask());
+                return "task/allTaskPage";
+            }
+
+
+
+
+
+
+        } else {
+            taskService.deleteTask(task);
         }
-        catch (Exception e){
-            return  "task/error";
-        }
 
 
-
-        return "task/updateTask";
+        model.addAttribute("tasks", taskService.getAllTask());
+        return "task/allTaskPage";
     }
 
-
-    @GetMapping ("/addSearchIDToDelete")
-    public String addSearchIDDelete(Model model){
-        return "task/searchIDDelete";
-    }
-
-    @PostMapping("/searchToDelete")
-    public String searchToDelete(@RequestParam("taskId") String taskId, Model model)  {
-        // Do something with the inputString
-
-        try{
-            model.addAttribute("task",taskService.findTask(taskId));
-        }
-        catch (Exception e){
-            return  "task/error";
-        }
-
-
-
-        return "task/deleteTask";
-    }
-
-
-    @PostMapping("/delete")
-    public String delete(@ModelAttribute Task task){
-        taskService.deleteTask(task);
-        return  "task/home";
-    }
 
 
 

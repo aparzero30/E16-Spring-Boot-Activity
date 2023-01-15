@@ -87,21 +87,21 @@
 
   <form action="/addTask" method="POST">
     <label>Title</label>
-    <input type="text" name="title">
+    <input type="text" name="title" id="title" class="title">
 
     <label>Description</label>
-    <input type="text" name ="description">
+    <input type="text" name ="description" id="description" class="description">
 
     <label>Completed</label>
 
-    <select name="completed">
+    <select name="completed" id="completed">
       <option value="Not Complete">Not Complete</option>
       <option value="Complete">Complete</option>
     </select>
 
 
   <br><br>
-    <button>Add Task</button>
+    <button id="task" onclick="checker()">Add Task</button>
 
   </form>
 
@@ -109,7 +109,34 @@
 
 
 
+<script>
 
+  let task = document.getElementById("task");
+
+  function checker(){
+
+    let tit= document.querySelector("#title").value;
+    let desc = document.querySelector("#description").value;
+
+    console.log(tit);
+
+
+    if(tit == ""  ){
+      alert("input field is missing!")
+    }
+    else if(desc == ""  ){
+        alert("input field is missing!")
+      }
+
+    else{
+      alert("task added !")
+    }
+
+  }
+
+
+
+  </script>
 
 
 
