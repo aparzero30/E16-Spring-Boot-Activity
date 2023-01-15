@@ -41,18 +41,20 @@
     justify-content: center;
     align-items: center;
     background-color: cornflowerblue ;
+    font-size: 1vw;
+    border-radius: 30px;
 
 
   }
 
   th{
-    width: 20vw;
+    width: 15vw;
     font-size: 4vh;
     color: #60c6fe;
 
   }
   td{
-    font-size: 3vh;
+    font-size: 2vh;
     text-align: center;
 
 
@@ -126,6 +128,11 @@ display: flex;
   form input{
     width: 20vw;
     font-size: 1vw;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    border: none;
+    outline: none;
+    height: 2vw;
   }
 
   form label{
@@ -145,6 +152,7 @@ display: flex;
 
 
 
+
  th,td{
 
 
@@ -155,12 +163,15 @@ display: flex;
   }
 
   form button{
+    cursor: pointer;
     height: 6vh;
     margin: 1vh;
     width: 20vw;
     background-color:cadetblue;
     border-style: none;
-
+    color: white;
+    border-radius: 30px;
+    font-size: 1vw;
   }
   .taskId{
     pointer-events: none;
@@ -171,6 +182,10 @@ display: flex;
     width: 20vw;
     font-size: 1vw;
     text-align: center;
+    height: 2vw;
+    font-family: "Poppins", sans-serif;
+    border: none;
+    outline: none;
   }
 
   .del{
@@ -183,9 +198,12 @@ display: flex;
     border-style: none;
     min-height: 8vh;
     min-width: 12vw;
-    border-radius: 15px;
+    border-radius: 30px;
     color: white;
     cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    font-size: 2vh;
+
   }
 
 
@@ -214,6 +232,7 @@ display: flex;
     <th>TITLE</th>
     <th>DESCRIPTION</th>
     <th>COMPLETED</th>
+    <th></th>
 
   </tr>
   <tr th:each="entry : ${tasks}" class="highlight">

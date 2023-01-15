@@ -29,19 +29,20 @@
   }
 
   .home{
-    height: 10vh;
+    height: 6vh;
     width: 20vw;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: cornflowerblue ;
-
+    font-size: 1vw;
+   border-radius: 30px;
 
   }
 
   form{
-    width: 50vw;
-    height: 50vh;
+    width: 30vw;
+    height: 60vh;
     background-color:  #2f3136;
     font-size: 1vw;
     display: flex;
@@ -53,27 +54,45 @@
   form input{
     width: 20vw;
     font-size: 1vw;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    border: none;
+    outline: none;
+    height: 2vw;
   }
 
   form select{
     width: 20vw;
     font-size: 1vw;
     text-align: center;
+    height: 2vw;
+    font-family: "Poppins", sans-serif;
+    border: none;
+    outline: none;
   }
   form label{
     margin: 3px;
     padding: 3px;
-
 
   }
 
 
 
   button{
-    height: 10vh;
+    height: 6vh;
     width: 20vw;
     background-color:cadetblue;
+    font-family: "Poppins", sans-serif;
+    border: none;
+    color: white;
+    border-radius: 30px;
+    font-size: 1vw;
 
+  }
+
+
+  form button{
+    cursor: pointer;
   }
 </style>
 <body>
@@ -101,7 +120,7 @@
 
 
   <br><br>
-    <button id="task" onclick="checker()">Add Task</button>
+    <button id="task" onclick="checker()">Add</button>
 
   </form>
 
