@@ -91,18 +91,54 @@
   }
 
 
+  .view{
+    background-color: #76c7c6;
+    height: 6vh;
+    width: 20vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1vw;
+    border-radius: 30px;
+
+  }
+
   form button{
     cursor: pointer;
+  }
+
+
+  .btn-holder{
+    width: 100vh;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 3vw;
   }
 </style>
 <body>
 
 
+<div class="btn-holder">
+
 <a href="http://localhost:8080/home">
 
-<div class="home">Go To Home</div><br>
+<div class="home">Home</div><br>
 
 </a>
+
+  <a href="http://localhost:8080/allTasks">
+
+    <div class="view">View Tasks</div><br>
+
+  </a>
+
+</div>
+
+
+
 
   <form action="/addTask" method="POST">
     <label>Title</label>
