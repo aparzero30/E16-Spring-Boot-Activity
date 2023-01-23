@@ -1,6 +1,7 @@
 package com.example.E16.Spring.Boot.Activity.entity;
 
 
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Table;
 
 @jakarta.persistence.Entity
@@ -9,8 +10,7 @@ public class Task {
 
 
 
-    @jakarta.persistence.GeneratedValue
-
+    @GeneratedValue
     @jakarta.persistence.Id
     private Integer taskId;
     private String title;

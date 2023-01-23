@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 
-@Configuration
+
 @EntityScan(basePackages = "com/example/E16/Spring/Boot/Activity")
 @EnableJpaRepositories(basePackages = "com.example.E16.Spring.Boot.Activity")
 public class E16SpringBootActivityApplication {

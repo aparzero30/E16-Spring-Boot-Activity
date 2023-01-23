@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.*;
 
 @org.springframework.stereotype.Controller
 @RequestMapping
-public class Controller {
+public class TaskController {
 
 
     private final TaskService taskService;
 
-    public Controller(TaskService taskService) {
+
+
+    public TaskController(TaskService taskService) {
         this.taskService = taskService;
     }
 
@@ -23,12 +25,12 @@ public class Controller {
 
         return  "task/home";
     }
-   @GetMapping ("addTaskPage")
+    @GetMapping ("addTaskPage")
     public String addTaskPage(Model model){
         return "task/addTaskPage";
-   }
+    }
 
-   @PostMapping("/addTask")
+    @PostMapping("/addTask")
     public String addTask(@ModelAttribute Task task){
 
 
@@ -38,10 +40,10 @@ public class Controller {
             return "task/addTaskPage";
         }
 
-       taskService.addTask(task);
+        taskService.addTask(task);
 
-       return "task/addTaskPage";
-   }
+        return "task/addTaskPage";
+    }
 
 
     @GetMapping("/allTasks")
@@ -49,6 +51,8 @@ public class Controller {
         model.addAttribute("tasks", taskService.getAllTask());
         return "task/allTaskPage";
     }
+
+
 
 
 
@@ -98,6 +102,11 @@ public class Controller {
         model.addAttribute("tasks", taskService.getAllTask());
         return "task/allTaskPage";
     }
+
+
+
+
+
 
 
 
